@@ -1,0 +1,68 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Crime {
+    int id;
+    String type;
+    String place;
+
+    Crime(int id, String type, String place) {
+        this.id = id;
+        this.type = type;
+        this.place = place;
+    }
+}
+
+public class CrimeManagement {
+
+    public static void main(String[] args) {
+
+        ArrayList<Crime> crimes = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\n--- Crime Records Management System ---");
+            System.out.println("1. Add Crime");
+            System.out.println("2. View Crimes");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter Crime ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Crime Type: ");
+                    String type = sc.nextLine();
+
+                    System.out.print("Enter Crime Place: ");
+                    String place = sc.nextLine();
+
+                    crimes.add(new Crime(id, type, place));
+                    System.out.println("Crime Added Successfully!");
+                    break;
+
+                case 2:
+                    System.out.println("\nCrime Records:");
+                    for (Crime c : crimes) {
+                        System.out.println(c.id + "  " + c.type + "  " + c.place);
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Thank You!");
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice");
+            }
+
+        } while (choice != 3);
+
+        sc.close();
+    }
+}
